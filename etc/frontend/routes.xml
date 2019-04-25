@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="standard">
-        <route frontName="sii" id="sii">
-            <module name="Sii_DialogflowIntegration"/>
+        <route frontName="dialogflow" id="dialogflow_integration">
+            <module name="SiiPoland_DialogflowIntegration"/>
         </route>
     </router>
 </config>

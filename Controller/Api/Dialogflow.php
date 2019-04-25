@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Sii\DialogflowIntegration\Controller\Api;
+namespace SiiPoland\DialogflowIntegration\Controller\Api;
 
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;

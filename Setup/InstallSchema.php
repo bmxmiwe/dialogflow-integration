@@ -1,26 +1,27 @@
 <?php
 declare(strict_types=1);
 
-namespace Sii\DialogflowIntegration\Setup;
+namespace SiiPoland\DialogflowIntegration\Setup;
 
 use Magento\Framework\DB\Ddl\Table;
+use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
-use Magento\Framework\Setup\InstallSchemaInterface;
 
 /**
  * Class InstallSchema
- * @package Sii\DialogflowIntegration\Setup
+ *
+ * @package SiiPoland\DialogflowIntegration\Setup
  */
 class InstallSchema implements InstallSchemaInterface
 {
     /**
      * @var string
      */
-    const TABLE_NAME = 'sii_dialogflow_order';
+    const TABLE_NAME = 'dialogflow_integration_order';
 
     /**
-     * @param SchemaSetupInterface $setup
+     * @param SchemaSetupInterface   $setup
      * @param ModuleContextInterface $context
      *
      * @throws \Zend_Db_Exception
@@ -33,47 +34,76 @@ class InstallSchema implements InstallSchemaInterface
         $installer->startSetup();
         $tableDialogflowOrder = $setup->getConnection()->newTable($setup->getTable(self::TABLE_NAME));
         $tableDialogflowOrder->addColumn(
-            'dialogflow_order_id',
+            'id',
             Table::TYPE_INTEGER,
             null,
             ['identity' => true, 'nullable' => false, 'primary' => true, 'unsigned' => true],
-            'Entity ID'
+            'ID'
         );
         $tableDialogflowOrder->addColumn(
-            'participant_name',
+            'customer_id',
+            Table::TYPE_INTEGER,
+            10,
+            ['nullable' => true, 'unsigned' => true],
+            'Customer id'
+        );
+        $tableDialogflowOrder->addColumn(
+            'name',
             Table::TYPE_TEXT,
             250,
             ['nullable' => false],
-            'Participant name'
+            'Name'
         );
         $tableDialogflowOrder->addColumn(
-            'participant_email',
+            'email',
             Table::TYPE_TEXT,
             255,
             ['nullable' => false],
-            'Participant email'
+            'Email'
+        );
+
+        $tableDialogflowOrder->addColumn(
+            'training',
+            Table::TYPE_TEXT,
+            250,
+            ['nullable' => false],
+            'Training name'
         );
         $tableDialogflowOrder->addColumn(
-            'participant_customer_id',
+            'location',
+            Table::TYPE_TEXT,
+            255,
+            ['nullable' => true, 'default' => null],
+            'Training Location'
+        );
+        $tableDialogflowOrder->addColumn(
+            'location_id',
             Table::TYPE_INTEGER,
             null,
-            ['nullable' => true],
-            'Participant customer id'
-        );
-        $tableDialogflowOrder->addColumn(
-            'course_name',
-            Table::TYPE_TEXT,
-            250,
-            ['nullable' => false],
-            'Course name'
-        );
-        $tableDialogflowOrder->addColumn(
-            'course_location',
-            Table::TYPE_TEXT,
-            255,
             [],
-            'Course location'
+            'Location Id'
         );
+        $tableDialogflowOrder->addColumn(
+            'processed',
+            Table::TYPE_BOOLEAN,
+            1,
+            ['default' => 0],
+            'It was processed?'
+        );
+
+        $tableDialogflowOrder->addForeignKey(
+            $setup->getFkName(
+                self::TABLE_NAME,
+                'customer_id',
+                'customer_entity',
+                'entity_id'
+            ),
+            'customer_id',
+            'customer_entity',
+            'entity_id',
+            Table::ACTION_CASCADE
+        );
+
         $setup->getConnection()->createTable($tableDialogflowOrder);
         $setup->endSetup();
     }
