@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="SiiPoland::top_level" module="SiiPoland_DialogflowIntegration" resource="Magento_Backend::content" sortOrder="9999" title="Sii Poland"/>
+		<add action="siipoland_dialogflowintegration/dialogflowintegrationorder/index" id="SiiPoland_DialogflowIntegration::siipoland_dialogflowintegration_dialogflowintegrationorder" module="SiiPoland_DialogflowIntegration" parent="SiiPoland::top_level" resource="Magento_Backend::content" sortOrder="9999" title="Dialogflow Integration Orders"/>
+	</menu>
+</config>

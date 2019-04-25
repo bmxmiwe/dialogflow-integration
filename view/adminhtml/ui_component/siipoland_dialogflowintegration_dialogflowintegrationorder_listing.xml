@@ -1,0 +1,95 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">siipoland_dialogflowintegration_dialogflowintegrationorder_listing.siipoland_dialogflowintegration_dialogflowintegrationorder_listing_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>siipoland_dialogflowintegration_dialogflowintegrationorder_columns</spinner>
+		<deps>
+			<dep>siipoland_dialogflowintegration_dialogflowintegrationorder_listing.siipoland_dialogflowintegration_dialogflowintegrationorder_listing_data_source</dep>
+		</deps>
+	</settings>
+	<dataSource component="Magento_Ui/js/grid/provider" name="siipoland_dialogflowintegration_dialogflowintegrationorder_listing_data_source">
+		<settings>
+			<updateUrl path="mui/index/render"/>
+		</settings>
+		<aclResource>SiiPoland_DialogflowIntegration::DialogflowIntegrationOrder</aclResource>
+		<dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="siipoland_dialogflowintegration_dialogflowintegrationorder_listing_data_source">
+			<settings>
+				<requestFieldName>id</requestFieldName>
+				<primaryFieldName>id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<settings>
+			<sticky>true</sticky>
+		</settings>
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls"/>
+		<filters name="listing_filters"/>
+		<paging name="listing_paging"/>
+	</listingToolbar>
+	<columns name="siipoland_dialogflowintegration_dialogflowintegrationorder_columns">
+		<selectionsColumn name="ids">
+			<settings>
+				<indexField>id</indexField>
+			</settings>
+		</selectionsColumn>
+		<column name="id">
+			<settings>
+				<filter>text</filter>
+				<sorting>asc</sorting>
+				<label translate="true">ID</label>
+			</settings>
+		</column>
+		<column name="customer_id">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Customer Id</label>
+			</settings>
+		</column>
+		<column name="name">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Name</label>
+			</settings>
+		</column>
+		<column name="email">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Email</label>
+			</settings>
+		</column>
+		<column name="training">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">training</label>
+			</settings>
+		</column>
+		<column name="location">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">location</label>
+			</settings>
+		</column>
+		<column name="location_id">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">location id</label>
+			</settings>
+		</column>
+		<column name="processed" class="SiiPoland\DialogflowIntegration\Ui\Component\Listing\Column\Processed">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">SiiPoland\DialogflowIntegration\Model\Source\Processed</item>
+				<item name="config" xsi:type="array">
+					<item name="label" translate="true" xsi:type="string">Processed</item>
+					<item name="dataType" xsi:type="string">select</item>
+					<item name="filter" xsi:type="string">select</item>
+				</item>
+			</argument>
+		</column>
+	</columns>
+</listing>
