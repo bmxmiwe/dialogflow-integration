@@ -16,4 +16,7 @@
 			</argument>
 		</arguments>
 	</type>
+	<type name="SiiPoland\DialogflowIntegration\Model\DialogflowIntegrationOrderRepository">
+		<plugin name="SiiPoland_DialogflowIntegration_CustomerCreating" type="SiiPoland\DialogflowIntegration\Plugin\Customer\AccountCheck" sortOrder="10" disabled="false"  />
+	</type>
 </config>

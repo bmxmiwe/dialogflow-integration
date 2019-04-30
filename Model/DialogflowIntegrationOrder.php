@@ -24,7 +24,7 @@ class DialogflowIntegrationOrder extends AbstractModel implements DialogflowInte
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->getData(self::ID);
     }

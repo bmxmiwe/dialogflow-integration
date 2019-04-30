@@ -22,7 +22,7 @@ interface DialogflowIntegrationOrderInterface
      * Get id
      * @return int
      */
-    public function getId(): int;
+    public function getId();
 
     /**
      * Get customer_id
